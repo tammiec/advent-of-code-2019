@@ -6,29 +6,32 @@ const passwordCounter = (min, max) => {
   for (let i = min; i <= max; i++) {
     let password = Array.from(String(i), Number);
     let double = false;
-    let prevNums = {};
-
+    
+    // check for increasing digits
     if (password[5] >= password[4] 
       && password[4] >= password[3] 
       && password[3] >= password[2] 
       && password[2] >= password[1] 
       && password[1] >= password[0]) {
-
+        
+        // count number of occurrences of each number
+        let prevNums = {};
+        
         for (let num of password) {
-          let prevNum;
-          if (num === prevNum) {
-            double = true;
-            // if (prevNums[num]) {
-            //   prevNums[num]++;
-            // } else {
-            //   prevNums[num] = 1;
-            // }
+          if (prevNums[num]) {
+            prevNums[num]++;
+          } else {
+            prevNums[num] = 1;
           }
-          prevNum = num;
+        }
+
+        // if number occurs twice, it is a double
+        if (Object.values(prevNums).includes(2)) {
+          double = true;
         }
 
     }
-    
+
     if (double) {
       counter++;
     }
