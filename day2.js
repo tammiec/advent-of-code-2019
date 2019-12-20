@@ -18,6 +18,7 @@ const intcode = input => {
     }
   }
 
+  console.log('output:', output)
   return output;
   
 };
