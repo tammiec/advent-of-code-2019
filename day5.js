@@ -4,20 +4,23 @@ const codes = '3,225,1,225,6,6,1100,1,238,225,104,0,1101,72,36,225,1101,87,26,22
 const sum = (a, b) => a + b;
 const multiply = (a, b) => a * b;
 
+const getInstructions = code => {
+  const instruction = code.toString().split('').map(num => parseInt(num));
+  for (let i = 0; i < 6; i++) {
+    if (instruction.length < 5) {
+      instruction.unshift(0);
+    }
+  }
+  return instruction;
+};
 
+// INTCODE function
 const intcode = (codes, input) => {
   let incr = 4;
 
   for (let i = 0; i < codes.length; i += incr) {
     
-    const instruction = codes[i].toString().split('').map(num => parseInt(num));
-    for (let j = 0; j < 6; j++) {
-      if (instruction.length < 5) {
-        instruction.unshift(0);
-      }
-    }
-    console.log('instruction:', instruction)
-
+    const instruction = getInstructions(codes[i]);
     const opcode = parseInt(instruction.slice(-2).join(''), 10);
 
     if (opcode === 99) {
