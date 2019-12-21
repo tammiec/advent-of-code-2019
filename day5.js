@@ -11,27 +11,27 @@ const intcode = (codes, input) => {
   for (let i = 0; i < codes.length; i += incr) {
     
     const instruction = codes[i].toString().split('').map(num => parseInt(num));
-    if (instruction.length < 5) {
-      for (let j = 0; j <= (5 - instruction.length); j++) {
+    for (let j = 0; j < 6; j++) {
+      if (instruction.length < 5) {
         instruction.unshift(0);
       }
     }
     console.log('instruction:', instruction)
+
     const opcode = parseInt(instruction.slice(-2).join(''), 10);
-    console.log('opcode:', opcode)
 
     if (opcode === 99) {
       return codes;
     } else if (opcode === 1) {
       incr = 4;
-      let val1 = codes[i + 1];
-      let val2 = codes[i + 2];
+      let val1 = instruction[2] === 0 ? codes[codes[i + 1]] : codes[i + 1];
+      let val2 = instruction[1] === 0 ? codes[codes[i + 2]] :codes[i + 2];
       let position = codes[i + 3];
       codes[position] = sum(val1, val2);
     } else if (opcode === 2) {
       incr = 4;
-      let val1 = codes[i + 1];
-      let val2 = codes[i + 2];
+      let val1 = instruction[2] === 0 ? codes[codes[i + 1]] : codes[i + 1];
+      let val2 = instruction[1] === 0 ? codes[codes[i + 2]] :codes[i + 2];
       let position = codes[i + 3];
       codes[position] = multiply(val1, val2);
     } else if (opcode === 3) {
