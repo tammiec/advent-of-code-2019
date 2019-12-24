@@ -24,5 +24,8 @@ const countOrbits = orbits => {
 
 };
 
+// map out planets in orbit to tree structure 
+// traverse the tree - for each node traversed, count++
+
 countOrbits(input);
 
