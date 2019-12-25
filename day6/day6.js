@@ -36,7 +36,7 @@ class Planet {
 	}
 }
 
-// write a class to map out planets in orbit to tree structure
+// write a class to map out planets in orbit to linked list structure
 
 class PlanetMap {
 
