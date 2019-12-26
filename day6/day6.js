@@ -7,9 +7,9 @@ const readFile = () => {
 	return data;
 };
 
-// const input = readFile();
+const input = readFile();
 
-const input = 'COM)B,B)C,C)D,D)E,E)F,B)G,G)H,D)I,E)J,J)K,K)L,K)YOU,I)SAN'.split(',').map(code => code.split(')'));
+// const input = 'COM)B,B)C,C)D,D)E,E)F,B)G,G)H,D)I,E)J,J)K,K)L,K)YOU,I)SAN'.split(',').map(code => code.split(')'));
 
 // planet class
 class Planet {
