@@ -100,6 +100,19 @@ class PlanetMap {
   		return { p1Path, p2Path, closest };
   	}
   }
+  
+  getDistanceToClosest(path1, path2, closest) {
+  	let p1Index = path1.indexOf(closest);
+  	let p2Index = path2.indexOf(closest);
+  	
+  	let p1ToClosest = path1.slice(0, p1Index);
+  	console.log(p1ToClosest);
+  	let p2ToClosest = path2.slice(0, p2Index);
+  	console.log(p2ToClosest);
+  	const distance = p1ToClosest.length + p2ToClosest.length;
+  	console.log(distance);
+  	return distance;
+  }
 
 };
 
@@ -107,4 +120,7 @@ class PlanetMap {
 const map = new PlanetMap(input);
 // console.log('map', map.planets);
 // console.log('total', map.getTotalOrbits());
-console.log('closest', map.closestCommonParent());
+// console.log('closest', map.closestCommonParent());
+const closest = map.closestCommonParent();
+const distance = map.getDistanceToClosest(closest.p1Path, closest.p2Path, closest.closest.name);
+console.log(distance);
